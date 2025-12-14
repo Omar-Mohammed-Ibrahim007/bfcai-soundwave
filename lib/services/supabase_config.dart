@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Supabase Configuration - Authentication Only
@@ -6,14 +7,12 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// To use Supabase:
 /// 1. Create a project at https://supabase.com
 /// 2. Get your URL and anon key from Project Settings > API
-/// 3. Update the values below
-/// 4. Add to pubspec.yaml: supabase_flutter: ^2.3.0
-/// 5. Call SupabaseConfig.initialize() in main.dart before runApp()
+/// 3. Add credentials to .env file
+/// 4. Call SupabaseConfig.initialize() in main.dart before runApp()
 
 class SupabaseConfig {
-  static const String supabaseUrl = 'https://tmldulhetdifczgusgbh.supabase.co';
-  static const String supabaseAnonKey =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRtbGR1bGhldGRpZmN6Z3VzZ2JoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU3MDE3MDQsImV4cCI6MjA4MTI3NzcwNH0.45ZNtbR-2cHjJchyBQx7lj77PDwH_W7s5PcjQjsBRp0';
+  static String get supabaseUrl => dotenv.env['SUPABASE_URL'] ?? '';
+  static String get supabaseAnonKey => dotenv.env['SUPABASE_ANON_KEY'] ?? '';
 
   static SupabaseClient get client => Supabase.instance.client;
 
