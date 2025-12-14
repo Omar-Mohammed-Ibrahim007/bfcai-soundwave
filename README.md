@@ -358,4 +358,7 @@ MIT License
 
 ## Author
 
-Omar
+Omar Mohamed Farouq
+Amr Ashraf Mohamed
+Omar Mohamed Ibrahim
+Mazen Ismail Mohamed
