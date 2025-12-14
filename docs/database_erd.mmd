@@ -1,0 +1,66 @@
+---
+title: Jamendo Music App - Database Architecture
+---
+erDiagram
+    USERS {
+        uuid id PK
+        string email UK
+        string encrypted_password
+        jsonb raw_user_meta_data
+        timestamp email_confirmed_at
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    STORAGE_AVATARS {
+        string bucket_id
+        string file_path
+        string public_url
+        string content_type
+        timestamp created_at
+    }
+
+    FAVORITE_SONGS_LOCAL {
+        string key PK
+        json value
+    }
+
+    FAVORITE_ARTISTS_LOCAL {
+        string key PK
+        json value
+    }
+
+    USER_PREFS_LOCAL {
+        string user_name
+        string user_image
+        string user_email
+    }
+
+    SONGS {
+        string id PK
+        string name
+        string artist_name
+        string artist_id FK
+        string album_name
+        string album_id
+        string album_image
+        string audio_url
+        int duration
+        string release_date
+    }
+
+    ARTISTS {
+        string id PK
+        string name
+        string image
+        string website
+        string join_date
+    }
+
+    USERS ||--o| STORAGE_AVATARS : "uploads"
+    USERS ||--o| USER_PREFS_LOCAL : "cached locally"
+    USER_PREFS_LOCAL ||--o{ FAVORITE_SONGS_LOCAL : "stores"
+    USER_PREFS_LOCAL ||--o{ FAVORITE_ARTISTS_LOCAL : "stores"
+    FAVORITE_SONGS_LOCAL }o--|| SONGS : "references"
+    FAVORITE_ARTISTS_LOCAL }o--|| ARTISTS : "references"
+    SONGS }o--|| ARTISTS : "belongs to"
