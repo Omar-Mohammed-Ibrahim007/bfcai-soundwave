@@ -209,9 +209,6 @@ class _ArtistsPageState extends State<ArtistsPage> {
         final isFavorite = favService.isArtistFavorite(artist.id);
 
         return GestureDetector(
-          onTap: () {
-            // Could navigate to artist details page
-          },
           child: Container(
             decoration: BoxDecoration(
               color: cardDark,

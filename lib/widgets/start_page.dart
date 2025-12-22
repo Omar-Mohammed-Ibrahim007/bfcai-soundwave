@@ -59,17 +59,14 @@ class _StartPageState extends State<StartPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // 4 Grid Boxes
                       _buildGridBoxes(context),
                       const SizedBox(height: 24),
 
-                      // Favorite Songs Section
                       _buildFavoriteSongsSection(context),
                       const SizedBox(height: 24),
 
-                      // Favorite Artists Section
                       _buildFavoriteArtistsSection(context),
-                      const SizedBox(height: 80), // Space for bottom player
+                      const SizedBox(height: 80),
                     ],
                   ),
                 ),

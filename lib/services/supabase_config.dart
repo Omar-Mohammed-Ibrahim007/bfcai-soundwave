@@ -1,15 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-/// Supabase Configuration - Authentication Only
-/// Favorites are stored locally with SharedPreferences
-///
-/// To use Supabase:
-/// 1. Create a project at https://supabase.com
-/// 2. Get your URL and anon key from Project Settings > API
-/// 3. Add credentials to .env file
-/// 4. Call SupabaseConfig.initialize() in main.dart before runApp()
-
 class SupabaseConfig {
   static String get supabaseUrl => dotenv.env['SUPABASE_URL'] ?? '';
   static String get supabaseAnonKey => dotenv.env['SUPABASE_ANON_KEY'] ?? '';
